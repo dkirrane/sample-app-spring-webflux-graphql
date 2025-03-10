@@ -2,7 +2,7 @@
 
 Sample SpringBoot app using WebFlux and GraphQL
 
-Following along course https://www.udemy.com/course/graphql-spring/
+Following along course Section 5: https://www.udemy.com/course/graphql-spring/
 
 ## Setup (using Spring CLI)
 
@@ -24,4 +24,73 @@ spring init \
     --artifact-id=sample-app-spring-webflux-graphql \
     --name=sample-app-spring-webflux-graphql \
     ./
+```
+
+## Source
+- [CustomerRepository](src/main/java/com/github/dkirrane/sample/repository/CustomerRepository.java) - Customer Repository using R2DBC ReactiveCrudRepository.
+- [CustomerService](src/main/java/com/github/dkirrane/sample/service/CustomerService.java) - Service for CRUD ops on Customer Repository.
+- [CustomerController](src/main/java/com/github/dkirrane/sample/controller/CustomerController.java) - GraphQL API Controller for Customer CRUD operations.
+- [Customer](src/main/java/com/github/dkirrane/sample/entity/Customer.java) - Customer Entity clas for the database.
+- [CustomerDto](src/main/java/com/github/dkirrane/sample/dto/CustomerDto.java) - Customer Data Transfer Object (DTO) for sending data to and from the GraphQL API.
+
+## GraphiQL
+Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations.
+
+GraphQL queries & variables for testing the CRUD application: 
+```graphql
+query GetAll {
+  customers{
+    id,
+    name,
+    age,
+    city,
+    type: __typename
+  }
+}
+
+query GetCustomerById($id: ID!){
+  customerById(id: $id){
+    id,
+    name,
+    age,
+    city,
+    type: __typename
+  }
+}
+  
+mutation CreateCustomer($customer: CustomerInput!) {
+  createCustomer(customer: $customer) {
+    id
+    name
+    age
+    city  
+  }
+}
+
+mutation UpdateCustomer($id: ID!, $customer: CustomerInput!) {
+  updateCustomer(id: $id, customer: $customer) {
+    id
+    name
+    age
+    city  
+  }
+}
+
+mutation DeleteCustomer($id: ID!) {
+  deleteCustomer(id: $id){
+    id
+    status
+  }
+}
+```
+Sample variables for above GraphQL mutations
+```json
+{
+  "id": 5,
+  "customer": {
+    "name": "dessie",
+    "age": 42,
+    "city": "Tuam"
+  }
+}
 ```

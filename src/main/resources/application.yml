@@ -1,0 +1,49 @@
+# https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+spring:
+
+  # graphql
+  graphql:
+
+    path: "/graphql" # GraphiQL UI endpoint
+    schema:
+      locations: classpath:graphql/**/
+      file-extensions: ".graphqls,.gqls,.gql"
+    graphiql:
+      enabled: true
+      path: "/graphiql" # GraphiQL UI endpoint
+
+  # DB schema
+  sql:
+    init:
+      schema-locations: classpath:db/schema/schema.sql
+      data-locations: classpath:db/data/data.sql
+
+  # R2DBC
+  r2dbc:
+    # Default (production) database configuration for PostgreSQL
+    url: r2dbc:postgresql://localhost:5432/mydb
+    username: postgres
+    password: password
+
+  datasource:
+    initialization-mode: always
+
+  profiles:
+    active: dev # Set to 'prod' for production
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  r2dbc:
+    # Development configuration for H2
+    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+    initialization-mode: always

@@ -1,4 +1,4 @@
-package com.github.dkirrane.sample_app_spring_webflux_graphql;
+package com.github.dkirrane.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

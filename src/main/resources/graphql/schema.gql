@@ -1,0 +1,39 @@
+# Sample CRUD with GraphQL
+
+# Read with Query
+type Query {
+    customers: [Customer]!
+    customerById(id: ID): Customer
+}
+
+# Create, Update, Delete using Mutation
+type Mutation {
+    createCustomer(customer: CustomerInput!): Customer
+    updateCustomer(id: ID!, customer: CustomerInput!): Customer
+    deleteCustomer(id: ID!): DeleteResponse # no void type in GraphQL
+}
+
+# Type for the Customer data returned in Query
+type Customer {
+    id: ID!
+    name: String
+    age: Int
+    city: String
+}
+
+# Input for the Mutations
+input CustomerInput {
+    name: String
+    age: Int
+    city: String
+}
+
+type DeleteResponse {
+    id: ID!
+    status: Status
+}
+
+enum Status {
+    SUCCESS,
+    FAILURE
+}
