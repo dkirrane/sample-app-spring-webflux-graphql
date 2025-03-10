@@ -11,8 +11,8 @@
 	<groupId>com.github.dkirrane</groupId>
 	<artifactId>sample-app-spring-webflux-graphql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>sample-app-spring-webflux-graphql</name>
+	<description>Sample SpringBoot app using WebFlux and GraphQL</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

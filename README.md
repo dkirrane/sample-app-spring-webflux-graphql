@@ -22,5 +22,6 @@ spring init \
     --build=maven \
     --group-id=com.github.dkirrane \
     --artifact-id=sample-app-spring-webflux-graphql \
-    ./sample-app-spring-webflux-graphql
+    --name=sample-app-spring-webflux-graphql \
+    ./
 ```
