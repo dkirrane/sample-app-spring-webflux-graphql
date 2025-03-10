@@ -1,6 +1,7 @@
-# sample-app-spring-webflux-graphql
+# Overview
 
-Sample SpringBoot app using WebFlux and GraphQL
+Sample SpringBoot app using **WebFlux** and **GraphQL**.
+Simple CRUD style app using GraphQL.
 
 Following along course Section 5: https://www.udemy.com/course/graphql-spring/
 
