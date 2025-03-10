@@ -3,8 +3,6 @@
 Sample SpringBoot app using **WebFlux** and **GraphQL**.
 Simple CRUD style app using GraphQL.
 
-Following along course Section 5: https://www.udemy.com/course/graphql-spring/
-
 ## Setup (using Spring CLI)
 
 Using [Spring Boot CLI](https://docs.spring.io/spring-boot/cli/index.html) instead of [Spring Initializr](https://start.spring.io/)
