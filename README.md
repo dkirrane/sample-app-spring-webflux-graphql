@@ -95,4 +95,4 @@ Sample variables for above GraphQL mutations
 }
 ```
 
-[graphiql](images/graphiql.png)
+![graphiql](images/graphiql.png)
