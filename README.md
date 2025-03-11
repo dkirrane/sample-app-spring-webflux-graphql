@@ -171,7 +171,7 @@ _Sample `$id` variable for above Delete Customer GraphQL mutation:_
 
 _For GraphQL Subscription you can run a second GraphiQL in another Browser window:_
 
-![graphiql](images/graphiql_subscription.png)
+![graphiql](images/graphiql_subscription.)
 
 ```graphql
 subscription {
