@@ -1,10 +1,18 @@
 # https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+
+logging:
+  level:
+    org.springframework.graphql: DEBUG # Or TRACE for very detailed logging
+    reactor.core: DEBUG # Or TRACE for reactive streams debugging
+
 spring:
 
   # graphql
   graphql:
 
-    path: "/graphql" # GraphiQL UI endpoint
+    path: "/graphql" # GraphQL UI endpoint
+    websocket:
+      path: "/graphql" # GraphQL UI endpoint for Subscription events
     schema:
       locations: classpath:graphql/**/
       file-extensions: ".graphqls,.gqls,.gql"

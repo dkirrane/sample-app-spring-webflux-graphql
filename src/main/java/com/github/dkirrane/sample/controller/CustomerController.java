@@ -18,7 +18,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @QueryMapping
-    public Flux<CustomerDto> customers(){
+    public Flux<CustomerDto> customers() {
         return customerService.allCustomers();
     }
 
@@ -39,7 +39,7 @@ public class CustomerController {
     }
 
     @MutationMapping
-    public Mono<DeleteResponseDto> deleteCustomer(@Argument Integer id){
+    public Mono<DeleteResponseDto> deleteCustomer(@Argument Integer id) {
         return customerService.deleteCustomer(id);
     }
 }

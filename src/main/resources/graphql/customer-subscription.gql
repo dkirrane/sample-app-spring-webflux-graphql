@@ -1,7 +1,20 @@
 # Sample Subscription with GraphQL
 
-# Subscribe to notification stream with Subscription
-type Query {
-    customers: [Customer]!
-    customerById(id: ID): Customer
+# Subscription to subscribe to notification stream of CustomerEvents
+type Subscription {
+    customerEvents: CustomerEvent
+}
+
+# Optionally use a union of different events to return...
+#union CustomerEvent = CustomerCreatedEvent | CustomerUpdatedEvent
+
+type CustomerEvent {
+    id: ID!
+    action: Action
+}
+
+enum Action {
+    CREATED
+    UPDATED
+    DELETED
 }
