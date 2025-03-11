@@ -36,6 +36,8 @@ spring init \
 Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations.
 
 GraphQL queries & variables for testing the CRUD application: 
+
+#### Query: Get all Customers
 ```graphql
 query GetAll {
   customers{
@@ -46,7 +48,10 @@ query GetAll {
     type: __typename
   }
 }
+```
 
+#### Query: Get Customer By ID
+```graphql
 query GetCustomerById($id: ID!){
   customerById(id: $id){
     id,
@@ -56,7 +61,16 @@ query GetCustomerById($id: ID!){
     type: __typename
   }
 }
-  
+```
+*Sample `id` variable for above Get Customer By ID GraphQL query:*
+```json
+{
+  "id": 2
+}
+```
+
+#### Mutation: Create Customer
+```graphql
 mutation CreateCustomer($customer: CustomerInput!) {
   createCustomer(customer: $customer) {
     id
@@ -65,7 +79,20 @@ mutation CreateCustomer($customer: CustomerInput!) {
     city  
   }
 }
+```
+*Sample `$customer` variable for above Create Customer GraphQL mutation:*
+```json
+{
+  "customer": {
+    "name": "dessie",
+    "age": 42,
+    "city": "Galway"
+  }
+}
+```
 
+#### Mutation: Update Customer
+```graphql
 mutation UpdateCustomer($id: ID!, $customer: CustomerInput!) {
   updateCustomer(id: $id, customer: $customer) {
     id
@@ -74,15 +101,8 @@ mutation UpdateCustomer($id: ID!, $customer: CustomerInput!) {
     city  
   }
 }
-
-mutation DeleteCustomer($id: ID!) {
-  deleteCustomer(id: $id){
-    id
-    status
-  }
-}
 ```
-Sample variables for above GraphQL mutations
+*Sample `$id` and `$customer` variable for above Update Customer GraphQL mutation:*
 ```json
 {
   "id": 5,
@@ -91,6 +111,22 @@ Sample variables for above GraphQL mutations
     "age": 42,
     "city": "Tuam"
   }
+}
+```
+
+#### Mutation: Delete Customer
+```graphql
+mutation DeleteCustomer($id: ID!) {
+  deleteCustomer(id: $id){
+    id
+    status
+  }
+}
+```
+*Sample `$id` variable for above Delete Customer GraphQL mutation:*
+```json
+{
+  "id": 5
 }
 ```
 
