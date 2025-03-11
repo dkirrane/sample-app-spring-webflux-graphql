@@ -2,6 +2,7 @@ package com.github.dkirrane.sample.controller;
 
 import com.github.dkirrane.sample.dto.CustomerDto;
 import com.github.dkirrane.sample.dto.DeleteResponseDto;
+import com.github.dkirrane.sample.exceptions.ApplicationErrors;
 import com.github.dkirrane.sample.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -24,7 +25,8 @@ public class CustomerController {
 
     @QueryMapping
     public Mono<CustomerDto> customerById(@Argument Integer id) {
-        return customerService.customerById(id);
+        return customerService.customerById(id)
+                .switchIfEmpty(ApplicationErrors.noSuchUser(id));
     }
 
     @MutationMapping

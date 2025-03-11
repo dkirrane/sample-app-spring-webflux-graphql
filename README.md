@@ -52,6 +52,12 @@ spring init \
 - [CustomerEvent](src/main/java/com/github/dkirrane/sample/dto/CustomerEvent.java) - Customer Data DTO for sending
   Customer events.
 
+###### Input Validation / ErrorHandling
+
+- [ApplicationException](src/main/java/com/github/dkirrane/sample/exceptions/ApplicationException.java) - Custom Exception for the application.
+- [ApplicationErrors](src/main/java/com/github/dkirrane/sample/exceptions/ApplicationErrors.java) - provides static methods for creating ApplicationExceptions.
+- [ExceptionResolver](src/main/java/com/github/dkirrane/sample/controller/ExceptionResolver.java) - `DataFetcherExceptionResolver` for handling exceptions and returning a GraphQL error list to API call.
+
 ## GraphiQL
 
 Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations:
@@ -94,6 +100,14 @@ _Sample `id` variable for above Get Customer By ID GraphQL query:_
 ```json
 {
   "id": 2
+}
+```
+
+_Use invalid `id` to trigger `ExceptionResolver`:_
+
+```json
+{
+  "id": 101
 }
 ```
 
