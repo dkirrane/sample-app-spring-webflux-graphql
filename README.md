@@ -36,31 +36,33 @@ spring init \
 Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations:
 [http://localhost:8080/graphiql](http://localhost:8080/graphiql)
 
-GraphQL queries & variables for testing the CRUD application: 
+*See GraphQL Queries, Mutations & Subscriptions below for testing the CRUD application:* 
+
+![graphiql](images/graphiql.png)
 
 #### Query: Get all Customers
 ```graphql
 query GetAll {
-  customers{
-    id,
-    name,
-    age,
-    city,
-    type: __typename
-  }
+    customers {
+        id
+        name
+        age
+        city
+        type: __typename
+    }
 }
 ```
 
 #### Query: Get Customer By ID
 ```graphql
-query GetCustomerById($id: ID!){
-  customerById(id: $id){
-    id,
-    name,
-    age,
-    city,
-    type: __typename
-  }
+query GetCustomerById($id: ID!) {
+    customerById(id: $id) {
+        id
+        name
+        age
+        city
+        type: __typename
+    }
 }
 ```
 *Sample `id` variable for above Get Customer By ID GraphQL query:*
@@ -73,12 +75,12 @@ query GetCustomerById($id: ID!){
 #### Mutation: Create Customer
 ```graphql
 mutation CreateCustomer($customer: CustomerInput!) {
-  createCustomer(customer: $customer) {
-    id
-    name
-    age
-    city  
-  }
+    createCustomer(customer: $customer) {
+        id
+        name
+        age
+        city
+    }
 }
 ```
 *Sample `$customer` variable for above Create Customer GraphQL mutation:*
@@ -130,5 +132,3 @@ mutation DeleteCustomer($id: ID!) {
   "id": 5
 }
 ```
-
-![graphiql](images/graphiql.png)
