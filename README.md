@@ -28,8 +28,8 @@ spring init \
 
 #### GraphQL schemas
 
-- [customer-crud.gql](src/main/resources/graphql/customer-crud.gql) - GraphQLQueries & Mutations for Customer API.
-- [customer-subscription.gql](src/main/resources/graphql/customer-subscription.gql) - GraphQL Subscription for Customer
+- [customer-crud.gql](src/main/resources/graphql/customer-crud.gql) - GraphQL Queries & Mutations for Customer CRUD API.
+- [customer-subscription.gql](src/main/resources/graphql/customer-subscription.gql) - GraphQL Subscription for Customer Event API.
   notifications.
 
 #### Source
