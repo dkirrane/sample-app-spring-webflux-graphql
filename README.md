@@ -33,7 +33,8 @@ spring init \
 - [CustomerDto](src/main/java/com/github/dkirrane/sample/dto/CustomerDto.java) - Customer Data Transfer Object (DTO) for sending data to and from the GraphQL API.
 
 ## GraphiQL
-Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations.
+Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations:
+[http://localhost:8080/graphiql](http://localhost:8080/graphiql)
 
 GraphQL queries & variables for testing the CRUD application: 
 
