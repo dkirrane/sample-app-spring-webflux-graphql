@@ -1,0 +1,7 @@
+# Sample Subscription with GraphQL
+
+# Subscribe to notification stream with Subscription
+type Query {
+    customers: [Customer]!
+    customerById(id: ID): Customer
+}

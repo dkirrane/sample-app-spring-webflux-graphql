@@ -3,9 +3,10 @@
 Sample SpringBoot app using **WebFlux** and **GraphQL**.
 Simple CRUD style app using GraphQL.
 
-## Setup (using Spring CLI)
+#### Setup (using Spring CLI)
 
-Using [Spring Boot CLI](https://docs.spring.io/spring-boot/cli/index.html) instead of [Spring Initializr](https://start.spring.io/)
+Use[Spring Boot CLI](https://docs.spring.io/spring-boot/cli/index.html) or [Spring Initializr](https://start.spring.io/)
+Requires `--dependencies` below:
 
 ```bash
 sdk install springboot
@@ -25,7 +26,13 @@ spring init \
     ./
 ```
 
-## Source
+#### GraphQL schemas
+
+- [customer-crud.gql](src/main/resources/graphql/customer-crud.gql) - GraphQLQueries & Mutations for Customer API.
+- [customer-subscription.gql](src/main/resources/graphql/customer-subscription.gql) - GraphQL Subscription for Customer notifications.
+
+#### Source
+
 - [CustomerRepository](src/main/java/com/github/dkirrane/sample/repository/CustomerRepository.java) - Customer Repository using R2DBC ReactiveCrudRepository.
 - [CustomerService](src/main/java/com/github/dkirrane/sample/service/CustomerService.java) - Service for CRUD ops on Customer Repository.
 - [CustomerController](src/main/java/com/github/dkirrane/sample/controller/CustomerController.java) - GraphQL API Controller for Customer CRUD operations.
@@ -33,39 +40,44 @@ spring init \
 - [CustomerDto](src/main/java/com/github/dkirrane/sample/dto/CustomerDto.java) - Customer Data Transfer Object (DTO) for sending data to and from the GraphQL API.
 
 ## GraphiQL
+
 Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations:
 [http://localhost:8080/graphiql](http://localhost:8080/graphiql)
 
-*See GraphQL Queries, Mutations & Subscriptions below for testing the CRUD application:* 
+_See GraphQL Queries, Mutations & Subscriptions below for testing the CRUD application:_
 
 ![graphiql](images/graphiql.png)
 
 #### Query: Get all Customers
+
 ```graphql
 query GetAll {
-    customers {
-        id
-        name
-        age
-        city
-        type: __typename
-    }
+  customers {
+    id
+    name
+    age
+    city
+    type: __typename
+  }
 }
 ```
 
 #### Query: Get Customer By ID
+
 ```graphql
 query GetCustomerById($id: ID!) {
-    customerById(id: $id) {
-        id
-        name
-        age
-        city
-        type: __typename
-    }
+  customerById(id: $id) {
+    id
+    name
+    age
+    city
+    type: __typename
+  }
 }
 ```
-*Sample `id` variable for above Get Customer By ID GraphQL query:*
+
+_Sample `id` variable for above Get Customer By ID GraphQL query:_
+
 ```json
 {
   "id": 2
@@ -73,17 +85,20 @@ query GetCustomerById($id: ID!) {
 ```
 
 #### Mutation: Create Customer
+
 ```graphql
 mutation CreateCustomer($customer: CustomerInput!) {
-    createCustomer(customer: $customer) {
-        id
-        name
-        age
-        city
-    }
+  createCustomer(customer: $customer) {
+    id
+    name
+    age
+    city
+  }
 }
 ```
-*Sample `$customer` variable for above Create Customer GraphQL mutation:*
+
+_Sample `$customer` variable for above Create Customer GraphQL mutation:_
+
 ```json
 {
   "customer": {
@@ -95,17 +110,20 @@ mutation CreateCustomer($customer: CustomerInput!) {
 ```
 
 #### Mutation: Update Customer
+
 ```graphql
 mutation UpdateCustomer($id: ID!, $customer: CustomerInput!) {
   updateCustomer(id: $id, customer: $customer) {
     id
     name
     age
-    city  
+    city
   }
 }
 ```
-*Sample `$id` and `$customer` variable for above Update Customer GraphQL mutation:*
+
+_Sample `$id` and `$customer` variable for above Update Customer GraphQL mutation:_
+
 ```json
 {
   "id": 5,
@@ -118,15 +136,18 @@ mutation UpdateCustomer($id: ID!, $customer: CustomerInput!) {
 ```
 
 #### Mutation: Delete Customer
+
 ```graphql
 mutation DeleteCustomer($id: ID!) {
-  deleteCustomer(id: $id){
+  deleteCustomer(id: $id) {
     id
     status
   }
 }
 ```
-*Sample `$id` variable for above Delete Customer GraphQL mutation:*
+
+_Sample `$id` variable for above Delete Customer GraphQL mutation:_
+
 ```json
 {
   "id": 5
