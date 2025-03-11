@@ -6,8 +6,7 @@ Simple CRUD style app using GraphQL.
 #### Setup (using Spring CLI)
 
 Use [Spring Boot CLI](https://docs.spring.io/spring-boot/cli/index.html)
-or [Spring Initializr](https://start.spring.io/)
-Requires `--dependencies` below:
+or [Spring Initializr](https://start.spring.io/) with required `--dependencies` below:
 
 ```bash
 sdk install springboot
