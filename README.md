@@ -167,6 +167,25 @@ _Sample `$id` variable for above Delete Customer GraphQL mutation:_
 }
 ```
 
+#### Multi-Mutations: Create & Update Customer
+
+```graphql
+mutation MultiMutation {
+  createCustomer(customer: {name: "Desmond", age: 30, city: "Galliamh"}) {
+    id
+    name
+    age
+    city
+  }
+  updateCustomer(id: 6, customer: {name: "Tommy", age: 33, city: "Sligo"}) {
+    id
+    name
+    age
+    city
+  }
+}
+```
+
 #### Subscription: Subscribe to Customer events
 
 _For GraphQL Subscription you can run a second GraphiQL in another Browser window:_
