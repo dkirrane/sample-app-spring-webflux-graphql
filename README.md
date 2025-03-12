@@ -185,6 +185,7 @@ _Sample `$id` variable for above Delete Customer GraphQL mutation:_
 }
 ```
 
+
 #### Multi-Mutations: Create & Update Customer
 
 ```graphql
@@ -221,3 +222,6 @@ subscription {
 
 # Security
 https://www.vinsguru.com/spring-webflux-security/
+
+# References
+Following along course https://www.udemy.com/course/graphql-spring/

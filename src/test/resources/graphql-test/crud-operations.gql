@@ -1,0 +1,52 @@
+query GetAll {
+    customers {
+        id
+        name
+        age
+        city
+        type: __typename
+    }
+}
+
+query GetCustomerById($id1: ID!, $id2: ID!) {
+    a: customerById(id: $id1) {
+        id
+        name
+        age
+        city
+        type: __typename
+    }
+    b: customerById(id: $id2) {
+        id
+        name
+        age
+        city
+        type: __typename
+    }
+}
+
+mutation CreateCustomer($customer: CustomerInput!) {
+    response: createCustomer(customer: $customer) {
+        id
+        name
+        age
+        city
+    }
+}
+
+mutation UpdateCustomer($id: ID!, $customer: CustomerInput!) {
+    response: updateCustomer(id: $id, customer: $customer) {
+        id
+        name
+        age
+        city
+    }
+}
+
+mutation DeleteCustomer($id: ID!) {
+    response: deleteCustomer(id: $id){
+        id
+        status
+    }
+}
+
