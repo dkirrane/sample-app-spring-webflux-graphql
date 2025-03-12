@@ -8,6 +8,10 @@ on:
 
 permissions: write-all
 
+concurrency:
+  group: ci
+  cancel-in-progress: true
+
 jobs:
 
   build:
