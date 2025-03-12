@@ -40,7 +40,7 @@ public class GraphqlCrudTest {
 
     @Test
     public void customerByIdTest() {
-        this.client.documentName("crud-operations")
+        this.client.documentName("crud-test")
                 .variables(Map.of("id1", 1, "id2", 2))
                 .operationName("GetCustomerById")
                 .execute()
@@ -50,7 +50,7 @@ public class GraphqlCrudTest {
 
     @Test
     public void createCustomerTest() {
-        this.client.documentName("crud-operations")
+        this.client.documentName("crud-test")
                 .variable("customer", CustomerDto.create(null, "dessie", 42, "Tuam"))
                 .operationName("CreateCustomer")
                 .execute()
@@ -62,14 +62,14 @@ public class GraphqlCrudTest {
 
     @Test
     public void updateCustomerTest() {
-        this.client.documentName("crud-operations")
+        this.client.documentName("crud-test")
                 .variables(Map.of(
-                        "id", 1,
+                        "id", 4,
                         "customer", CustomerDto.create(null, "dessie", 42, "Tuam")
                 ))
                 .operationName("UpdateCustomer")
                 .execute()
-                .path("response.id").entity(Integer.class).isEqualTo(1)
+                .path("response.id").entity(Integer.class).isEqualTo(4)
                 .path("response.name").entity(String.class).isEqualTo("dessie")
                 .path("response.age").entity(Integer.class).isEqualTo(42)
                 .path("response.city").entity(String.class).isEqualTo("Tuam");
@@ -77,12 +77,12 @@ public class GraphqlCrudTest {
 
     @Test
     public void deleteCustomerTest() {
-        this.client.documentName("crud-operations")
-                .variable("id", 2)
+        this.client.documentName("crud-test")
+                .variable("id", 5)
                 .operationName("DeleteCustomer")
                 .execute()
                 .path("response").entity(DeleteResponseDto.class).satisfies(deleteResponseDto -> {
-                            Assertions.assertThat(deleteResponseDto.getId()).isEqualTo(2);
+                            Assertions.assertThat(deleteResponseDto.getId()).isEqualTo(5);
                             Assertions.assertThat(deleteResponseDto.getStatus()).isEqualTo(Status.SUCCESS);
                         }
                 );

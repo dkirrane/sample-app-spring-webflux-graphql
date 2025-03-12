@@ -19,7 +19,7 @@ public class GraphqlErrorTest {
     @Test
     public void createCustomerTest() {
         // Check it fails with error cause customer must be age 18 and over
-        this.client.documentName("crud-operations")
+        this.client.documentName("crud-test")
                 .variable("customer", CustomerDto.create(null, "dessie", 12, "Tuam"))
                 .operationName("CreateCustomer")
                 .execute()
