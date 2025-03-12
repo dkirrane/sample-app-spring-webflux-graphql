@@ -25,25 +25,25 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-      - name: Build and Package with Maven
-        run: mvn clean package --batch-mode
+    - name: Build and Package with Maven
+      run: mvn clean package --batch-mode
 
-      - name: Run Maven tests
-        run: mvn test --batch-mode
+    - name: Run Maven tests
+      run: mvn test --batch-mode
 
-      - name: Upload Surefire reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: surefire-reports
-          path: target/surefire-reports
+    - name: Upload Surefire reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: surefire-reports
+        path: target/surefire-reports
 
-      - name: Test Report
-        if: success() || failure()
-        uses: dorny/test-reporter@v2
-        with:
-          name: Maven Tests Results
-          path: target/surefire-reports/*.xml
-          reporter: java-junit
+    - name: Test Report
+      if: success() || failure()
+      uses: dorny/test-reporter@v2
+      with:
+        name: Maven Tests Results
+        path: target/surefire-reports/*.xml
+        reporter: java-junit
 
     # Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Submit Dependency Snapshot
