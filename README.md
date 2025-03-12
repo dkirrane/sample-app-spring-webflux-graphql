@@ -58,6 +58,10 @@ spring init \
 - [ApplicationErrors](src/main/java/com/github/dkirrane/sample/exceptions/ApplicationErrors.java) - provides static methods for creating ApplicationExceptions.
 - [ExceptionResolver](src/main/java/com/github/dkirrane/sample/controller/ExceptionResolver.java) - `DataFetcherExceptionResolver` for handling exceptions and returning a GraphQL error list to API call.
 
+
+###### Sample Client app
+- [ClientCommandLineRunner](src/main/java/com/github/dkirrane/sample/client/ClientCommandLineRunner.java) - Creates a CLI Client and sends a sample GraphQL query on application startup.
+
 ## GraphiQL
 
 Run the SpringBoot application and use the baked in GraphiQL to run the GraphQL CRUD queries & mutations:
