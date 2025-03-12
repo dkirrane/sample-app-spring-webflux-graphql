@@ -26,7 +26,7 @@ jobs:
         cache: maven
 
     - name: Build and Package with Maven
-      run: mvn clean package --batch-mode
+      run: mvn clean package --batch-mode -DskipTests
 
     - name: Run Maven tests
       run: mvn test --batch-mode
