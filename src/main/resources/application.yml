@@ -2,8 +2,8 @@
 
 logging:
   level:
-    org.springframework.graphql: DEBUG # Or TRACE for very detailed logging
-    reactor.core: DEBUG # Or TRACE for reactive streams debugging
+    org.springframework.graphql: INFO # Or DEBUG or TRACE for very detailed logging
+    reactor.core: INFO # Or DEBUG or TRACE for reactive streams debugging
 
 spring:
 
@@ -38,6 +38,11 @@ spring:
 
   profiles:
     active: dev # Set to 'prod' for production
+
+# ClientDemo
+customer:
+  service:
+    url: http://localhost:8080/graphql
 
 ---
 spring:

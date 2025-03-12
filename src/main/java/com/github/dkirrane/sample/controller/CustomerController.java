@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.function.Predicate;
+
 @Controller
 public class CustomerController {
 
@@ -26,13 +28,17 @@ public class CustomerController {
     @QueryMapping
     public Mono<CustomerDto> customerById(@Argument Integer id) {
         return customerService.customerById(id)
-                .switchIfEmpty(ApplicationErrors.noSuchUser(id));
+                .switchIfEmpty(ApplicationErrors.customerNotFound(id));
     }
 
     @MutationMapping
     public Mono<CustomerDto> createCustomer(@Argument CustomerDto customer) {
-        System.out.println("customer = " + customer);
-        return customerService.createCustomer(customer);
+        Predicate<CustomerDto> isValid = c -> (c.getAge() >= 18);
+
+        return Mono.just(customer)
+                .filter(isValid)
+                .flatMap(c -> customerService.createCustomer(c))
+                .switchIfEmpty(ApplicationErrors.mustBe18(customer.getAge()));
     }
 
     @MutationMapping
