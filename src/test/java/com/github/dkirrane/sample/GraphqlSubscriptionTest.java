@@ -28,7 +28,7 @@ public class GraphqlSubscriptionTest {
                 .builder(WS_PATH, new ReactorNettyWebSocketClient())
                 .build();
 
-        // Check it fails with error cause customer must be age 18 and over
+        // Create a customer, server-side will call sink.tryEmitNext() what will then be received by the WebSocket GraphQl client subscribed below.
         this.client.documentName("crud-test")
                 .variable("customer", CustomerDto.create(null, "dessie", 42, "Tuam"))
                 .operationName("CreateCustomer")
